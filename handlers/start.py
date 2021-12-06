@@ -47,7 +47,8 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message()
+@Client.on_message(
+command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 
 async def start_(client: Client, message: Message):
     await message.reply_text(
@@ -90,7 +91,7 @@ async def start_(client: Client, message: Message):
 
 
 @Client.on_message(
-)
+command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited)
 async def start(client: Client, message: Message):
     current_time = datetime.utcnow()
     uptime_sec = (current_time - START_TIME).total_seconds()
