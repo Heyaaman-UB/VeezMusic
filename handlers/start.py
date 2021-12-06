@@ -90,7 +90,6 @@ async def start_(client: Client, message: Message):
 
 
 @Client.on_message(
-    command() & filters.group & ~filters.edited
 )
 async def start(client: Client, message: Message):
     current_time = datetime.utcnow()
@@ -118,7 +117,7 @@ async def start(client: Client, message: Message):
 
 
 @Client.on_message(
-    command() & filters.group & ~filters.edited
+    command(["help", f"help@{BOT_USERNAME}"]) & filters.group & ~filters.edited
 )
 async def help(client: Client, message: Message):
     await message.reply_text(
