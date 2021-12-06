@@ -47,9 +47,8 @@ async def _human_time_duration(seconds):
     return ", ".join(parts)
 
 
-@Client.on_message(
-    command() & filters.private & ~filters.edited
-)
+@Client.on_message()
+
 async def start_(client: Client, message: Message):
     await message.reply_text(
         f"""✨ **Welcome {message.from_user.mention()} !**\n
